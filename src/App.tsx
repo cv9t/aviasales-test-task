@@ -1,7 +1,8 @@
 import React from "react";
+import Filter from "./components/Filter/Filter";
 
 function App() {
-	return <div>Hello</div>;
+	return <Filter title="Количество пересадок" />;
 }
 
 export default App;

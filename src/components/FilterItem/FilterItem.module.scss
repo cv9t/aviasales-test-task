@@ -1,0 +1,60 @@
+.filterItem {
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+
+	background-color: transparent;
+
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f1fcff;
+	}
+
+	&__title {
+		margin-left: 10px;
+
+		font-size: 13px;
+	}
+
+	&__chx {
+		position: relative;
+		margin: 0;
+
+		width: 20px;
+		height: 20px;
+
+		appearance: none;
+		outline: 0;
+
+		border: 1px solid #9abbce;
+		border-radius: 4px;
+
+		&::before {
+			display: block;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			width: 8px;
+			height: 12px;
+
+			opacity: 0;
+
+			border: solid;
+			border-color: #2196f3;
+			border-width: 0 2px 2px 0;
+
+			transform: translate(-50%, -60%) rotate(45deg);
+
+			content: "";
+		}
+
+		&:checked {
+			&::before {
+				opacity: 1;
+			}
+		}
+	}
+}

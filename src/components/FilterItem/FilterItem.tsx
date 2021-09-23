@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { IFilterItem } from "../../types/types";
+import cl from "./FilterItem.module.scss";
 
 interface FilterItemProps {
 	item: IFilterItem;
@@ -7,10 +8,14 @@ interface FilterItemProps {
 
 const FilterItem: FC<FilterItemProps> = ({ item }) => {
 	return (
-		<div className="filterItem">
-			<input type="checkbox" value={item.value} />
-			<div className="filterItem__title">{item.title}</div>
-		</div>
+		<label className={cl.filterItem}>
+			<input
+				type="checkbox"
+				value={item.value}
+				className={cl.filterItem__chx}
+			/>
+			<div className={cl.filterItem__title}>{item.title}</div>
+		</label>
 	);
 };
 

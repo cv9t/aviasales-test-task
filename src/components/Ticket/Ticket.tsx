@@ -7,7 +7,7 @@ interface TicketProps {
 }
 
 const Ticket: FC<TicketProps> = ({ item }) => {
-	const imgUrl = `//pics.avs.io/99/36/${item.carrier}.png`;
+	const imgUrl: string = `//pics.avs.io/99/36/${item.carrier}.png`;
 
 	return (
 		<div className={cl.ticket}>

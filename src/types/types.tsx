@@ -1,12 +1,12 @@
 export interface IFilterItem {
 	title: string;
-	value: string;
+	filterType: string;
 }
 
 export interface ITabItem {
 	name: string;
 	title: string;
-	value: string;
+	sortType: string;
 }
 
 export interface ITicket {

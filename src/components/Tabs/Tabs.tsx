@@ -1,30 +1,31 @@
 import React, { FC } from "react";
 import TabItem from "../TabItem/TabItem";
+import { ITabItem } from "../../types/types";
 import cl from "./Tabs.module.scss";
 
 const Tabs: FC = () => {
-	const Tabs = [
+	const Tabs: ITabItem[] = [
 		{
-			name: "bestFor",
+			name: "tabSort",
 			title: "Самый дешевый",
-			value: "cheap",
+			sortType: "cheap",
 		},
 		{
-			name: "bestFor",
+			name: "tabSort",
 			title: "Самый быстрый",
-			value: "fast",
+			sortType: "fast",
 		},
 		{
-			name: "bestFor",
+			name: "tabSort",
 			title: "Оптимальный",
-			value: "balanced",
+			sortType: "balanced",
 		},
 	];
 
 	return (
 		<div className={cl.tabs}>
 			{Tabs.map((item) => (
-				<TabItem key={item.value} item={item} />
+				<TabItem key={item.sortType} item={item} />
 			))}
 		</div>
 	);

@@ -10,12 +10,12 @@ const TabItem: FC<TabItemProps> = ({ item }) => {
 	return (
 		<div className={cl.tabItem__wrapper}>
 			<input
-				id={item.value}
 				type="radio"
-				value={item.value}
+				id={item.sortType}
+				value={item.sortType}
 				name={item.name}
 			/>
-			<label className={cl.tabItem} htmlFor={item.value}>
+			<label className={cl.tabItem} htmlFor={item.sortType}>
 				{item.title}
 			</label>
 		</div>

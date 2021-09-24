@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { IFilterItem } from "../../types/types";
 import FilterItem from "../FilterItem/FilterItem";
 import cl from "./Filter.module.scss";
 
@@ -7,26 +8,26 @@ interface FilterProps {
 }
 
 const Filter: FC<FilterProps> = ({ title }) => {
-	const filterItems = [
+	const filterItems: IFilterItem[] = [
 		{
 			title: "Все",
-			value: "-1",
+			filterType: "-1",
 		},
 		{
 			title: "Без пересадок",
-			value: "0",
+			filterType: "0",
 		},
 		{
 			title: "1 пересадка",
-			value: "1",
+			filterType: "1",
 		},
 		{
 			title: "2 пересадки",
-			value: "2",
+			filterType: "2",
 		},
 		{
 			title: "3 пересадки",
-			value: "3",
+			filterType: "3",
 		},
 	];
 
@@ -34,7 +35,7 @@ const Filter: FC<FilterProps> = ({ title }) => {
 		<div className={cl.filter}>
 			<div className={cl.filter__title}>{title}</div>
 			{filterItems.map((item) => (
-				<FilterItem item={item} key={item.value} />
+				<FilterItem item={item} key={item.filterType} />
 			))}
 		</div>
 	);

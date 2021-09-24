@@ -1,19 +1,17 @@
 .ticket {
-	display: flex;
-	flex-direction: column;
-
-	&__header {
-		display: flex;
-		justify-content: space-between;
-	}
-
+	&,
 	&__content {
 		display: flex;
 		flex-direction: column;
 	}
 
+	&__header,
 	&__row {
 		display: flex;
 		justify-content: space-between;
+	}
+
+	&__price {
+		font-size: 24px;
 	}
 }

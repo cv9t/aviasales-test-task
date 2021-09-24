@@ -11,7 +11,7 @@ const FilterItem: FC<FilterItemProps> = ({ item }) => {
 		<label className={cl.filterItem}>
 			<input
 				type="checkbox"
-				value={item.value}
+				value={item.filterType}
 				className={cl.filterItem__chx}
 			/>
 			<div className={cl.filterItem__title}>{item.title}</div>

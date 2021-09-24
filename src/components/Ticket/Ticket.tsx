@@ -22,25 +22,23 @@ const Ticket: FC<TicketProps> = ({ item }) => {
 					({ origin, destination, date, stops, duration }) => (
 						<div className={cl.ticket__row}>
 							<div className={cl.ticket__wrapper}>
-								<div className={cl.ticket__route}>
-									${origin} - ${destination}
+								<div className={cl.ticket__title}>
+									{origin} - {destination}
 								</div>
-								<div className={cl.ticket__date}>${date}</div>
+								<div className={cl.ticket__data}>{date}</div>
 							</div>
 							<div className={cl.ticket__wrapper}>
-								<div className={cl.ticket__durationTitle}>
-									В пути
-								</div>
-								<div className={cl.ticket__duration}>
-									${duration}
+								<div className={cl.ticket__title}>В пути</div>
+								<div className={cl.ticket__data}>
+									{duration}
 								</div>
 							</div>
 							<div className={cl.ticket__wrapper}>
-								<div className={cl.ticket__stopsTitle}>
-									${stops.length} пересадки
+								<div className={cl.ticket__title}>
+									{stops.length} пересадки
 								</div>
-								<div className={cl.ticket__stops}>
-									${stops.join(", ")}
+								<div className={cl.ticket__data}>
+									{stops.join(", ")}
 								</div>
 							</div>
 						</div>

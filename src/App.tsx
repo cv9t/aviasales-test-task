@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AviaSalesLogo from "./assets/svg/logo.svg";
 import { ReactSVG } from "react-svg";
 import "./styles/App.scss";
-import FilteredTicketPage from "./components/FilteredTicketPage/FilteredTicketPage";
+import FilteredTicketPage from "./pages/FilteredTicketPage/FilteredTicketPage";
+import axios from "axios";
+import { ISearchId, ITicket } from "./types/types";
 
 function App() {
 	return (

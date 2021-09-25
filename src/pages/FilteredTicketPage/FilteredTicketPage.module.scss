@@ -1,0 +1,14 @@
+.filteredTicketPage {
+	display: flex;
+	justify-content: space-between;
+
+	max-width: 760px;
+	width: 100%;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+
+		width: 67%;
+	}
+}

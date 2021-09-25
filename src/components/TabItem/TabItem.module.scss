@@ -1,0 +1,45 @@
+.tabItem {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	padding: 15px 0;
+	margin-bottom: auto;
+
+	border: 1px solid #dfe5ec;
+	background-color: #fff;
+
+	color: #000;
+	font-weight: 600;
+	text-transform: uppercase;
+
+	cursor: pointer;
+
+	&__wrapper {
+		display: flex;
+		flex-grow: 1;
+
+		width: 33%;
+
+		&:first-child label {
+			border-radius: 5px 0 0 5px;
+			border-right: none;
+		}
+
+		&:last-child label {
+			border-radius: 0 5px 5px 0;
+			border-left: none;
+		}
+	}
+}
+
+input[type="radio"] {
+	display: none;
+	position: absolute;
+}
+
+input[type="radio"]:checked + .tabItem {
+	color: #fff;
+	border-color: #2196f3;
+	background-color: #2196f3;
+}

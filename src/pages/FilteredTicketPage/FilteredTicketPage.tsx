@@ -10,10 +10,6 @@ import axios from "axios";
 const FilteredTicketPage = () => {
 	const [tickets, setTickets] = useState<ITicket[]>([]);
 
-	useEffect(() => {
-		fetchSearchId();
-	}, []);
-
 	async function fetchSearchId() {
 		const {
 			data: { searchId },
@@ -48,8 +44,13 @@ const FilteredTicketPage = () => {
 			} catch (error) {}
 		}
 
-		setTickets(result);
+		setTickets(result.filter((t, i) => i < 20));
 	}
+
+	useEffect(() => {
+		fetchSearchId();
+	}, []);
+
 	return (
 		<div className={cl.filteredTicketPage}>
 			<Filter title="Количество пересадок" />
@@ -57,7 +58,9 @@ const FilteredTicketPage = () => {
 				<Tabs />
 				<List
 					items={tickets}
-					renderItem={(ticket: ITicket) => <Ticket item={ticket} />}
+					renderItem={(ticket: ITicket, index) => (
+						<Ticket item={ticket} key={`ticket-${index}`} />
+					)}
 				/>
 			</div>
 		</div>

@@ -3,7 +3,11 @@ import TabItem from "../TabItem/TabItem";
 import { ITabItem } from "../../types/types";
 import cl from "./Tabs.module.scss";
 
-const Tabs: FC = () => {
+interface TabsProps {
+	onSortChange: (sort: string) => void;
+}
+
+const Tabs: FC<TabsProps> = ({ onSortChange }) => {
 	const Tabs: ITabItem[] = [
 		{
 			name: "tabSort",
@@ -25,7 +29,11 @@ const Tabs: FC = () => {
 	return (
 		<div className={cl.tabs}>
 			{Tabs.map((item) => (
-				<TabItem key={item.sortType} item={item} />
+				<TabItem
+					key={item.sortType}
+					item={item}
+					onSortChange={onSortChange}
+				/>
 			))}
 		</div>
 	);

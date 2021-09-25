@@ -4,15 +4,17 @@ import cl from "./FilterItem.module.scss";
 
 interface FilterItemProps {
 	item: IFilterItem;
+	onFilterChange: (e: any) => void;
 }
 
-const FilterItem: FC<FilterItemProps> = ({ item }) => {
+const FilterItem: FC<FilterItemProps> = ({ item, onFilterChange }) => {
 	return (
 		<label className={cl.filterItem}>
 			<input
 				type="checkbox"
-				value={item.filterType}
+				checked={item.checked}
 				className={cl.filterItem__chx}
+				onChange={onFilterChange}
 			/>
 			<div className={cl.filterItem__title}>{item.title}</div>
 		</label>

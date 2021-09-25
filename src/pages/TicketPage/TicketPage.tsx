@@ -3,12 +3,28 @@ import { ITicket, ISearchId } from "../../types/types";
 import Filter from "../../components/Filter/Filter";
 import Ticket from "../../components/Ticket/Ticket";
 import List from "../../components/List";
-import cl from "./FilteredTicketPage.module.scss";
+import cl from "./TicketPage.module.scss";
 import Tabs from "../../components/Tabs/Tabs";
 import axios from "axios";
+import { useTickets } from "../../hooks/useTickets";
 
-const FilteredTicketPage = () => {
+const TicketPage = () => {
 	const [tickets, setTickets] = useState<ITicket[]>([]);
+	const [filters, setFilters] = useState<string[]>([]);
+	const [sort, setSort] = useState<string>("");
+	const sortedAndFilteredTickets: ITicket[] = useTickets(
+		tickets,
+		sort,
+		filters,
+	);
+
+	const sortTickets = (sort: string) => {
+		setSort(sort);
+	};
+
+	const filterTicket = (filters: string[]) => {
+		setFilters(filters);
+	};
 
 	async function fetchSearchId() {
 		const {
@@ -35,16 +51,14 @@ const FilteredTicketPage = () => {
 					},
 				);
 
-				result = [...tickets];
-
 				if (stop) {
-					console.log(searchId);
+					result = [...tickets];
 					break;
 				}
 			} catch (error) {}
 		}
 
-		setTickets(result.filter((t, i) => i < 20));
+		setTickets(result);
 	}
 
 	useEffect(() => {
@@ -52,12 +66,15 @@ const FilteredTicketPage = () => {
 	}, []);
 
 	return (
-		<div className={cl.filteredTicketPage}>
-			<Filter title="Количество пересадок" />
-			<div className={cl.filteredTicketPage__container}>
-				<Tabs />
+		<div className={cl.TicketPage}>
+			<Filter
+				title="Количество пересадок"
+				onFilterChange={filterTicket}
+			/>
+			<div className={cl.TicketPage__container}>
+				<Tabs onSortChange={sortTickets} />
 				<List
-					items={tickets}
+					items={sortedAndFilteredTickets}
 					renderItem={(ticket: ITicket, index) => (
 						<Ticket item={ticket} key={`ticket-${index}`} />
 					)}
@@ -67,4 +84,4 @@ const FilteredTicketPage = () => {
 	);
 };
 
-export default FilteredTicketPage;
+export default TicketPage;

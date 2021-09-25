@@ -11,15 +11,15 @@ interface TicketProps {
 
 const Ticket: FC<TicketProps> = ({ item }) => {
 	const imgUrl: string = `//pics.avs.io/99/36/${item.carrier}.png`;
-	const stopsTitle = (stops: string[]): string =>
-		`${stops.length} ${getNumCapEnd(
+	const stopsTitle = (stops: string[]) =>
+		getNumCapEnd(
 			{
 				one: "пересадка",
 				two: "пересадки",
-				few: "пересадок",
+				few: "без пересадок",
 			},
 			stops.length,
-		)}`;
+		);
 
 	return (
 		<div className={cl.ticket}>
@@ -55,10 +55,12 @@ const Ticket: FC<TicketProps> = ({ item }) => {
 							</div>
 							<div className={cl.ticket__wrapper}>
 								<div className={cl.ticket__title}>
-									{stopsTitle(stops)}
+									{stops.length
+										? stops.length + " " + stopsTitle(stops)
+										: stopsTitle(stops)}
 								</div>
 								<div className={cl.ticket__data}>
-									{stops.join(", ")}
+									{stops.length ? stops.join(", ") : "—"}
 								</div>
 							</div>
 						</div>

@@ -1,14 +1,15 @@
 import React, { FC, useState, useEffect, ChangeEvent } from "react";
 import FilterItem from "../FilterItem/FilterItem";
 import cl from "./Filter.module.scss";
-import { IFilterItem } from "../../types/types";
+import { IFilter, IFilterItem } from "../../types/types";
 
 interface FilterProps {
 	title: string;
-	onFilterChange: (filters: string[]) => void;
+	filter: IFilter;
+	onFilterChange: (filter: { chx: string[]; sort: string }) => void;
 }
 
-const Filter: FC<FilterProps> = ({ title, onFilterChange }) => {
+const Filter: FC<FilterProps> = ({ title, onFilterChange, filter }) => {
 	const items: IFilterItem[] = [
 		{
 			title: "Все",
@@ -55,7 +56,7 @@ const Filter: FC<FilterProps> = ({ title, onFilterChange }) => {
 			.filter((item) => item.checked)
 			.map((item) => item.filterType);
 
-		onFilterChange([...newFilters]);
+		onFilterChange({ ...filter, chx: [...newFilters] });
 	};
 
 	useEffect(() => {

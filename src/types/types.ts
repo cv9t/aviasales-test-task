@@ -4,6 +4,11 @@ export interface IFilterItem {
 	checked: boolean;
 }
 
+export interface IFilter {
+	chx: string[];
+	sort: string;
+}
+
 export interface ITabItem {
 	name: string;
 	title: string;

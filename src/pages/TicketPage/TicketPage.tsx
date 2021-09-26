@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ITicket, ISearchId } from "../../types/types";
+import { ITicket, ISearchId, IFilter } from "../../types/types";
 import Filter from "../../components/Filter/Filter";
 import Ticket from "../../components/Ticket/Ticket";
 import List from "../../components/List";
@@ -7,24 +7,19 @@ import cl from "./TicketPage.module.scss";
 import Tabs from "../../components/Tabs/Tabs";
 import axios from "axios";
 import { useTickets } from "../../hooks/useTickets";
+import MyButton from "../../components/UI/button/MyButton";
+import Loader from "../../components/UI/Loader/Loader";
 
 const TicketPage = () => {
 	const [tickets, setTickets] = useState<ITicket[]>([]);
-	const [filters, setFilters] = useState<string[]>([]);
-	const [sort, setSort] = useState<string>("");
+	const [filter, setFilter] = useState<IFilter>({ chx: [], sort: "" });
+	const [ticketsLimit, setTicketsLimit] = useState<number>(5);
+	const [isTicketsLoading, setIsTicketsLoading] = useState<boolean>(false);
 	const sortedAndFilteredTickets: ITicket[] = useTickets(
 		tickets,
-		sort,
-		filters,
+		filter.sort,
+		filter.chx,
 	);
-
-	const sortTickets = (sort: string) => {
-		setSort(sort);
-	};
-
-	const filterTicket = (filters: string[]) => {
-		setFilters(filters);
-	};
 
 	async function fetchSearchId() {
 		const {
@@ -33,8 +28,9 @@ const TicketPage = () => {
 			"https://front-test.beta.aviasales.ru/search",
 		);
 
-		let result: ITicket[] = [];
+		let allTickets: ITicket[] = [];
 
+		setIsTicketsLoading(true);
 		while (true) {
 			try {
 				const {
@@ -51,34 +47,51 @@ const TicketPage = () => {
 					},
 				);
 
+				allTickets = [...tickets];
+
 				if (stop) {
-					result = [...tickets];
 					break;
 				}
 			} catch (error) {}
 		}
+		setIsTicketsLoading(false);
 
-		setTickets(result);
+		setTickets([...allTickets]);
 	}
 
 	useEffect(() => {
+		setTicketsLimit(5);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [filter]);
+
+	useEffect(() => {
 		fetchSearchId();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<div className={cl.TicketPage}>
 			<Filter
 				title="Количество пересадок"
-				onFilterChange={filterTicket}
+				filter={filter}
+				onFilterChange={setFilter}
 			/>
 			<div className={cl.TicketPage__container}>
-				<Tabs onSortChange={sortTickets} />
+				<Tabs filter={filter} onSortChange={setFilter} />
+				{isTicketsLoading && <Loader />}
 				<List
-					items={sortedAndFilteredTickets}
+					items={sortedAndFilteredTickets.filter(
+						(i, index) => index < ticketsLimit,
+					)}
 					renderItem={(ticket: ITicket, index) => (
 						<Ticket item={ticket} key={`ticket-${index}`} />
 					)}
 				/>
+				{ticketsLimit <= sortedAndFilteredTickets.length && (
+					<MyButton onClick={() => setTicketsLimit(ticketsLimit + 5)}>
+						показать еще 5 билетов!
+					</MyButton>
+				)}
 			</div>
 		</div>
 	);

@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import TabItem from "../TabItem/TabItem";
-import { ITabItem } from "../../types/types";
+import { IFilter, ITabItem } from "../../types/types";
 import cl from "./Tabs.module.scss";
 
 interface TabsProps {
-	onSortChange: (sort: string) => void;
+	filter: IFilter;
+	onSortChange: (filter: { chx: string[]; sort: string }) => void;
 }
 
-const Tabs: FC<TabsProps> = ({ onSortChange }) => {
+const Tabs: FC<TabsProps> = ({ onSortChange, filter }) => {
 	const Tabs: ITabItem[] = [
 		{
 			name: "tabSort",
@@ -32,6 +33,7 @@ const Tabs: FC<TabsProps> = ({ onSortChange }) => {
 				<TabItem
 					key={item.sortType}
 					item={item}
+					filter={filter}
 					onSortChange={onSortChange}
 				/>
 			))}

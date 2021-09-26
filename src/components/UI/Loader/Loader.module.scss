@@ -1,0 +1,26 @@
+.loader {
+	width: 50px;
+	height: 50px;
+
+	border: 2px dashed #2196f3;
+	border-radius: 50%;
+	animation: rotate 2s infinite linear;
+}
+
+.loaderWrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg) scale(1);
+	}
+	50% {
+		transform: rotate(360deg) scale(1.4);
+	}
+	to {
+		transform: rotate(0deg) scale(1);
+	}
+}

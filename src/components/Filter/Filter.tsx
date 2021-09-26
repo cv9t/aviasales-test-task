@@ -38,7 +38,10 @@ const Filter: FC<FilterProps> = ({ title, onFilterChange }) => {
 	];
 	const [filterItems, setFilterItems] = useState([...items]);
 
-	const handlerFilter = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+	const handleFilterChange = (
+		e: ChangeEvent<HTMLInputElement>,
+		index: number,
+	) => {
 		const { checked } = e.target;
 		const newCheckboxes = filterItems.map((item, i) =>
 			i === index ? { ...item, checked } : item,
@@ -48,11 +51,11 @@ const Filter: FC<FilterProps> = ({ title, onFilterChange }) => {
 	};
 
 	const setNewFilters = (filterItems: IFilterItem[]) => {
-		const NewFilters = filterItems
+		const newFilters = filterItems
 			.filter((item) => item.checked)
 			.map((item) => item.filterType);
 
-		onFilterChange(NewFilters);
+		onFilterChange([...newFilters]);
 	};
 
 	useEffect(() => {
@@ -67,7 +70,7 @@ const Filter: FC<FilterProps> = ({ title, onFilterChange }) => {
 				<FilterItem
 					key={item.filterType}
 					item={item}
-					onFilterChange={(e) => handlerFilter(e, index)}
+					onFilterChange={(e) => handleFilterChange(e, index)}
 				/>
 			))}
 		</div>

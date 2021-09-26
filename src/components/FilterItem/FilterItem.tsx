@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, ChangeEvent } from "react";
 import { IFilterItem } from "../../types/types";
 import cl from "./FilterItem.module.scss";
 
 interface FilterItemProps {
 	item: IFilterItem;
-	onFilterChange: (e: any) => void;
+	onFilterChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FilterItem: FC<FilterItemProps> = ({ item, onFilterChange }) => {

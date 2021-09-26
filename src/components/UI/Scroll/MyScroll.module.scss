@@ -1,0 +1,28 @@
+.myScroll {
+	position: fixed;
+	top: calc(100% - 20px);
+	z-index: 10000;
+
+	transform: translate(-300%, -100%);
+
+	opacity: 0;
+	visibility: hidden;
+
+	cursor: pointer;
+
+	& svg {
+		height: 50px;
+		width: 50px;
+	}
+
+	& path {
+		fill: #2196f3;
+	}
+}
+
+.visible {
+	opacity: 1;
+	visibility: visible;
+
+	transition: all 0.5s linear;
+}

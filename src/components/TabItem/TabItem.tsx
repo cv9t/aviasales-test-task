@@ -1,19 +1,21 @@
 import React, { FC } from "react";
-import { ITabItem } from "../../types/types";
+import { ITabItem, IFilter } from "../../types/types";
 import cl from "./TabItem.module.scss";
 
 interface TabItemProps {
 	item: ITabItem;
+	filter: IFilter;
+	onSortChange: (filter: { chx: string[]; sort: string }) => void;
 }
 
-const TabItem: FC<TabItemProps> = ({ item }) => {
+const TabItem: FC<TabItemProps> = ({ item, onSortChange, filter }) => {
 	return (
 		<div className={cl.tabItem__wrapper}>
 			<input
 				type="radio"
 				id={item.sortType}
-				value={item.sortType}
 				name={item.name}
+				onClick={() => onSortChange({ ...filter, sort: item.sortType })}
 			/>
 			<label className={cl.tabItem} htmlFor={item.sortType}>
 				{item.title}

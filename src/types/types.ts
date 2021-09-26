@@ -1,6 +1,12 @@
 export interface IFilterItem {
 	title: string;
 	filterType: string;
+	checked: boolean;
+}
+
+export interface IFilter {
+	chx: string[];
+	sort: string;
 }
 
 export interface ITabItem {
@@ -16,6 +22,7 @@ export interface ITicketSegment {
 	stops: string[];
 	duration: number;
 }
+
 export interface ITicket {
 	price: number;
 	carrier: string;

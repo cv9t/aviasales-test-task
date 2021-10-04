@@ -67,7 +67,7 @@ const TicketPage = () => {
                 />
                 {ticketsLimit < sortedAndFilteredTickets.length && (
                     <MyButton onClick={() => setTicketsLimit(ticketsLimit + 5)}>
-                        показать еще 5 билетов!
+                        показать еще билеты!
                     </MyButton>
                 )}
                 <MyScroll

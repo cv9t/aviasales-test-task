@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# aviasales-test-task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub top language][top-language-url]
+![GitHub last commit][last-commit-url]
+![GitHub repo size][repo-size-url]
 
-## Available Scripts
+## Aviasales test task
 
-In the project directory, you can run:
+This task was taken from the [Hexlet repository][hexlet-repository-url]. It was made just for React / TypeScript practice.
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*Languages:* TypeScript
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+*Development library:* React
 
-### `npm test`
+*CSS preprocessor:* SCSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Package management:* NPM
 
-### `npm run build`
+## Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![aviasales-test-task][screenshot]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Demo
+[Online demo][demo]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Note:** If you have 404 page just press *Back to our site*
 
-### `npm run eject`
+## Install
+```js
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm run build // minifies the code
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+npm run start // local demo, watches and rebuilds on changes
+```
+## Contacts
+**Mail:** sviatoslavnazin@gmail.com 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[top-language-url]: https://img.shields.io/github/languages/top/cv9t/aviasales-test-task?style=for-the-badge
+[last-commit-url]: https://img.shields.io/github/last-commit/cv9t/aviasales-test-task?color=success&style=for-the-badge
+[repo-size-url]: https://img.shields.io/github/repo-size/cv9t/aviasales-test-task?color=success&style=for-the-badge
+[hexlet-repository-url]: https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend
+[screenshot]: https://user-images.githubusercontent.com/75265938/138292571-1727bdf3-c84c-4b21-809d-9ca8b1773e2e.gif
+[demo]: https://cv9t-aviasales-task.netlify.app
